@@ -1,4 +1,4 @@
-import { Special } from './special.model';
+import { Special } from './special';
 
 describe('Special', () => {
   it('should create an instance', () => {

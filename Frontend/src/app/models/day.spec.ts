@@ -1,4 +1,4 @@
-import { Day } from './day.model';
+import { Day } from './day';
 
 describe('Day', () => {
   it('should create an instance', () => {

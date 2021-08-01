@@ -1,4 +1,4 @@
-import { City } from './city.model';
+import { City } from './city';
 
 describe('City', () => {
   it('should create an instance', () => {

@@ -1,6 +1,6 @@
-import {Restaurant} from './restaurant.model';
+import {Restaurant} from './restaurant';
 
-export class City {
+export class Special {
   id: number;
   name: string;
   status: number;
