@@ -1,0 +1,48 @@
+DROP TABLE IF EXISTS specials;
+DROP TABLE IF EXISTS restaurants;
+DROP TABLE IF EXISTS neighborhoods;
+DROP TABLE IF EXISTS cities;
+DROP TABLE IF EXISTS flairs;
+
+CREATE TABLE (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE cities(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE neighborhoods(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  city_id INT FOREIGN KEY NOT NULL
+);
+
+CREATE TABLE restaurants(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  neighborhood_id INT FOREIGN KEY NOT NULL
+);
+
+CREATE TABLE specials(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  price NUMBER NOT NULL,
+  restaurant_id INT FOREIGN KEY NOT NULL,
+  starts VARCHAR(15),
+  ends VARCHAR(15),
+  notes VARCHAR(100),
+  status INT,
+  confirmation_date VARCHAR(10)
+);
+
+CREATE TABLE special_flairs(
+  special_id INT FOREIGN KEY,
+  flair_id INT FOREIGN KEY
+);
+
+INSERT INTO cities ('name') VALUES 
+  ('Chicago'),
+  ('The Dirty Vern');
