@@ -1,43 +1,50 @@
-<h3>Daily Specials</h3>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterMenu" aria-contols="filterMenu">
+<div class="container-fluid">
+  <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterMenu" aria-contols="filterMenu">
   >>
-</button>
-<div class="offcanvas offcanvas-start bg-secondary" tabindex="-1" id="filterMenu" aria-labelledby="filterMenuLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="filterMenuLabel">Filter</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
+  </button>
+  <h3 align="center">{{this.selectedDay}} Specials</h3>
+  <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="filterMenu" aria-labelledby="filterMenuLabel">
+    <div class="offcanvas-header">
+      <h3 class="offcanvas-title" id="filterMenuLabel">Filter</h3>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <!-- Offcanvas filter menu -->
     <div class="offcanvas-body">
+      <!-- Start of input fields -->
       <form>
-      <div class="btn-group btn-group-sm" role="group" aria-label="Day Selection" id="daySelect">
-        <button (click)="daySelect(0)" type="button" class="btn btn-primary">Sunday</button>
-        <button (click)="daySelect(1)" type="button" class="btn btn-primary">Monday</button>
-        <button (click)="daySelect(2)" type="button" class="btn btn-primary">Tuesday</button>
-        <button (click)="daySelect(3)" type="button" class="btn btn-primary">Wednesday</button>
-        <button (click)="daySelect(4)" type="button" class="btn btn-primary">Thursday</button>
-        <button (click)="daySelect(5)" type="button" class="btn btn-primary">Friday</button>
-        <button (click)="daySelect(6)" type="button" class="btn btn-primary">Saturday</button>
-      </div>
-      <div>
-        <label for="priceRange" class="form-label">Price Range</label>
-        <input type="range" class="form-range" min="1" max="20" step="1" id="priceRange">
-      </div>
-      <div class="btn-group">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="citySelection" data-bs-toggle="dropdown" aria-expanded="false">
-          City
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="citySelection">
-        </ul>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="neighborhoodSelection" data-bs-toggle="dropdown" aria-expanded="false">
-          Neighborhood
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="neighborhoodSelection">
-        </ul>
-      </div>
-      </div>
-    </form>
+        <!-- day button group -->
+        <div class="btn-group mt-3" role="group" aria-label="Day Selection" id="daySelect">
+          <button (click)="dayBtnClick(0)" type="button" class="btn btn-primary">Su</button>
+          <button (click)="dayBtnClick(1)" type="button" class="btn btn-primary">Mo</button>
+          <button (click)="dayBtnClick(2)" type="button" class="btn btn-primary">Tu</button>
+          <button (click)="dayBtnClick(3)" type="button" class="btn btn-primary">We</button>
+          <button (click)="dayBtnClick(4)" type="button" class="btn btn-primary">Th</button>
+          <button (click)="dayBtnClick(5)" type="button" class="btn btn-primary">Fr</button>
+          <button (click)="dayBtnClick(6)" type="button" class="btn btn-primary">Sa</button>
+        </div>
+        <!-- Price range input -->
+        <div class="mt-5">
+          <label for="priceRange" class="form-label">Price Range: ${{this.maxPrice}}</label>
+          <input type="range" class="form-range" min="1" max="20" step="1" id="priceRange">
+        </div>
+        <!-- City and neighborhood dropdown menus -->
+        <div class="btn-group mt-5">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="citySelection" data-bs-toggle="dropdown" aria-expanded="false">
+              City
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="citySelection">
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="neighborhoodSelection" data-bs-toggle="dropdown" aria-expanded="false">
+            Neighborhood
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="neighborhoodSelection">
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

@@ -5,26 +5,46 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './specials.component.html',
   styleUrls: ['./specials.component.css']
 })
+
 export class SpecialsComponent implements OnInit {
+  selectedDay: String;
+  daySelect: HTMLElement;
+  priceRange: HTMLElement;
+  dayBtns: HTMLCollectionOf<Element>;
+  maxPrice: Number;
 
-  constructor() { 
+  constructor() { }
+
+  ngOnInit(): void { 
+
+    this.daySelect = document.getElementById("daySelect");
+    this.dayBtnClick(new Date().getDay());
+    this.dayBtns = this.daySelect.getElementsByClassName("btn");
+
+    this.dayBtnClick(new Date().getDay());
+
+    this.priceRange = document.getElementById("priceRange");
+    this.maxPrice = Number((document.getElementById("priceRange") as HTMLInputElement).value);
   }
 
-  ngOnInit(): void {
-    let selectedDay: String;
-    this.daySelect(new Date().getDay());
-  }
+  dayBtnClick(dayClicked: Number): void{
+    var day = new Array(7);
+    day[0] = "Sunday";
+    day[1] = "Monday";
+    day[2] = "Tuesday";
+    day[3] = "Wednesday";
+    day[4] = "Thursday";
+    day[5] = "Friday";
+    day[6] = "Saturday";
 
-  daySelect(day: Number): void{
-    var daySelect = document.getElementById("daySelect");
-    var dayBtns = daySelect!.getElementsByClassName("btn");
+    this.selectedDay = day[Number(dayClicked)];
+
     for (var i = 0; i < 7; i++){
-      if(i == day){
-        dayBtns[i].className += " active";
-        this.selectedDay = dayBtns[i].textContent;
+      if(i == dayClicked){
+        this.dayBtns[i].className += " active";
       }
       else{
-        dayBtns[i].className = dayBtns[i].className.replace(" active", "");
+        this.dayBtns[i].className = this.dayBtns[i].className.replace(" active", "");
       }
     }
   }
