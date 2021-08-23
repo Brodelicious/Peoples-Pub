@@ -1,6 +1,5 @@
 package com.TheBrodieBunch.services;
 
-import com.TheBrodieBunch.beans.City;
 import com.TheBrodieBunch.beans.*;
 import com.TheBrodieBunch.data.*;
 
@@ -18,7 +17,7 @@ public class CityService{
   }
 
   // Create
-  public Integer addCity(City city){
+  public Integer add(City city){
     return cityDAO.save(city).getId();
   }
   
@@ -28,7 +27,10 @@ public class CityService{
   }
   
   public Set<City> getAll(){
-    List<City> cities = CityDAO.findAll();
+    List<City> list = CityDAO.findAll();
+    Set<City> set = new HashSet<>();
+    set.addAll(list);
+    return set;
   }
 
   // Update
@@ -39,7 +41,9 @@ public class CityService{
   }
 
   // Delete
-  @Transactional
+  public void delete(Cite city){
+    cityDAO.delete(city);
+  }
 
 
 }}
